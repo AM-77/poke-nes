@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from "react"
 import useInfiniteScroll from "./utils/useInfiniteScroll"
 import loadPokes from "./utils/loadPokes"
-import Loader from "./components/Loader"
-import PokemonList from "./components/PokemonList"
-import PokemonDetails from "./components/PokemonDetails"
-
+import Header from "./containers/Header"
+import Main from "./containers/Main"
 import "nes.css/css/nes.min.css"
+
 
 function App() {
   const [pokemons, setPokemons] = useState([])
@@ -43,38 +42,17 @@ function App() {
 
   return (
     <div className="app-container">
-      <header className="app-header">
-        <div className="brand">
-          <div className="ash">
-            <i className="nes-ash"></i>
-          </div>
-          <div className="app-name">
-            <h1>PokeNES</h1>
-          </div>
-        </div>
-        <a href="https://github.com/AM-77/poke-nes" className="github-icon">
-          <i className="nes-icon github"></i>
-        </a>
-      </header>
-      <div  className={`app-main ${isOpenAside ? "open-aside" : "" }`}>
-        <div className="aside-container">
-          { 
-            isOpenAside && <PokemonDetails 
-              pokemon={selectedPokemon}
-              closeAside={closeAside}
-            /> 
-          }
-        </div>
-        <div ref={listRef} className="list-container">
-          <div className="list-wrapper">
-            <PokemonList 
-              pokemons={pokemons} 
-              openAside={openAside}
-              /> 
-            { isLoading && <Loader hasMore={hasMore} /> }
-          </div>
-        </div>
-      </div>
+      <Header />
+      <Main 
+        isOpenAside={isOpenAside}
+        selectedPokemon={selectedPokemon}
+        pokemons={pokemons}
+        isLoading={isLoading}
+        hasMore={hasMore}
+        listRef={listRef}
+        openAside={openAside}
+        closeAside={closeAside}
+      />
     </div>
   )
 }
