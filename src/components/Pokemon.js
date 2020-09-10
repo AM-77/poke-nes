@@ -8,7 +8,7 @@ export default function Pokemon({ openAside, pokemon: { id, name, img } }) {
       <h2 className="nes-text poke-name">{name}</h2>
       <div className="poke-image">
         <img src={img} style={{ display: isLoaded ? "block" : "none" }} alt={name} onLoad={() => setIsLoaded(true)} />
-        { !isLoaded && <i className="pokeball nes-pokeball"></i> }
+        { !isLoaded && <i data-testid="pokeball-icon" className="pokeball nes-pokeball"></i> }
       </div>
     </button>
   )

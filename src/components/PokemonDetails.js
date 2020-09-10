@@ -8,7 +8,7 @@ export default function PokemonDetails({ pokemon: { abilities, height, id, img, 
     <div className="pokemon-details">
       <div className="header">
         <div className="poke-name">
-          <h3># {id}: {name}</h3>
+          <h3 ># <span data-testid="id">{id}</span>: <span data-testid="name">{name}</span></h3>
         </div>
         <div className="close-btn">
           <button onClick={closeAside} className="nes-btn is-error">
@@ -18,9 +18,9 @@ export default function PokemonDetails({ pokemon: { abilities, height, id, img, 
       </div>
       <div className="main">
         <div className="titles">
-          <div onClick={() => setActiveTab(1)} className={`title ${activeTab === 1 ? "active" : ""}`}><span>Infos</span></div>
-          <div onClick={() => setActiveTab(2)} className={`title ${activeTab === 2 ? "active" : ""}`}><span>Abilities</span></div>
-          <div onClick={() => setActiveTab(3)} className={`title ${activeTab === 3 ? "active" : ""}`}><span>Stats</span></div>
+          <div data-testid="tab-1" onClick={() => setActiveTab(1)} className={`title ${activeTab === 1 ? "active" : ""}`}><span>Infos</span></div>
+          <div data-testid="tab-2" onClick={() => setActiveTab(2)} className={`title ${activeTab === 2 ? "active" : ""}`}><span>Abilities</span></div>
+          <div data-testid="tab-3" onClick={() => setActiveTab(3)} className={`title ${activeTab === 3 ? "active" : ""}`}><span>Stats</span></div>
         </div>
         <div className="tabs">
           <div className={`tab infos ${activeTab === 1 ? "active" : ""}`}>
@@ -32,11 +32,11 @@ export default function PokemonDetails({ pokemon: { abilities, height, id, img, 
               </div>
               <p>height: <span>{height / 10}m</span></p>
               <p>weight: <span>{weight / 10}KG</span></p>
-              <p>species: <span>{species.name}</span></p>
+              <p>species: <span data-testid="species">{species.name}</span></p>
             </div>
             <div className="image">
               <img src={img} style={{ display: isLoadedImage ? "block" : "none" }} alt={name} onLoad={() => setIsLoadedImage(true)} />
-              { !isLoadedImage && <i className="pokeball nes-pokeball"></i> }
+              { !isLoadedImage && <i data-testid="pokeball-icon" className="pokeball nes-pokeball"></i> }
             </div>
           </div>
           <div className={`tab ability ${activeTab === 2 ? "active" : ""}`}>
