@@ -17,12 +17,9 @@ export default function Main({ isOpenAside, selectedPokemon, pokemons, isLoading
       <div ref={listRef} className="list-container">
         <div className="list-wrapper">
           { 
-            (pokemons.length > 0) && <PokemonList
-              pokemons={pokemons} 
-              openAside={openAside}
-            /> 
+            (pokemons.length > 0) && <PokemonList pokemons={pokemons} openAside={openAside} /> 
+            isLoading && <Loader hasMore={hasMore} /> 
           }
-          { isLoading && <Loader hasMore={hasMore} /> }
         </div>
       </div>
     </div>
