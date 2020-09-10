@@ -6,20 +6,22 @@ import Loader from '../components/Loader'
 export default function Main({ isOpenAside, selectedPokemon, pokemons, isLoading, hasMore, listRef, openAside, closeAside }) {
   return (
     <div  className={`app-main ${isOpenAside ? "open-aside" : "" }`}>
-      <div className="aside-container">
-        { 
-          isOpenAside && <PokemonDetails
+      { 
+        isOpenAside && <div className="aside-container">
+          <PokemonDetails
             pokemon={selectedPokemon}
             closeAside={closeAside}
           /> 
-        }
-      </div>
+        </div>
+      }
       <div ref={listRef} className="list-container">
         <div className="list-wrapper">
-          <PokemonList
-            pokemons={pokemons} 
-            openAside={openAside}
+          { 
+            (pokemons.length > 0) && <PokemonList
+              pokemons={pokemons} 
+              openAside={openAside}
             /> 
+          }
           { isLoading && <Loader hasMore={hasMore} /> }
         </div>
       </div>
