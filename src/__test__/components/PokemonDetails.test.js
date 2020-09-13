@@ -91,8 +91,8 @@ describe('<PokemonDetails />', () => {
 
   it("should render the pokemon's name & id", () => {
     const { getByTestId } = render(<PokemonDetails pokemon={pokemon} />)
-    expect(getByTestId("id").textContent).toBe(pokemon.id.toString())
-    expect(getByTestId("name").textContent).toBe(pokemon.name)
+    expect(getByTestId("id")).toHaveTextContent(pokemon.id.toString())
+    expect(getByTestId("name")).toHaveTextContent(pokemon.name)
   })
 
   it("should render the infos tab", () => {
@@ -106,7 +106,7 @@ describe('<PokemonDetails />', () => {
     })
     expect(getByText(`${pokemon.height / 10}m`)).toBeInTheDocument()
     expect(getByText(`${pokemon.weight / 10}KG`)).toBeInTheDocument()
-    expect(getByTestId("species").textContent).toBe(pokemon.species.name)
+    expect(getByTestId("species")).toHaveTextContent(pokemon.species.name)
     expect(pokeImage.style._values.display).toBe("none")
     expect(pokeballImage).toBeInTheDocument()
     fireEvent(pokeImage, new Event('load'))
