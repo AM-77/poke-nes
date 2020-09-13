@@ -4,7 +4,7 @@ A Pokédex in a Nintendo style. `built with react`
 
 ![screenshot](https://i.ibb.co/3NFBNvv/screenshot-poke-nes-vercel-app-1599687017677.png)
 
-## Usage:
+## Dev:
 
 1. Install dependencies:
 
