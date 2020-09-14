@@ -5,7 +5,6 @@ import Header from "./containers/Header"
 import Main from "./containers/Main"
 import "nes.css/css/nes.min.css"
 
-
 function App() {
   const [pokemons, setPokemons] = useState([])
   const [page, setPage] = useState(0)
@@ -14,6 +13,7 @@ function App() {
   const [hasMore, setHasMore] = useState(true)
   const [isOpenAside, setIsOpenAside] = useState(false)
   const [selectedPokemon, setSelectedPokemon] = useState(0)
+  const [error, setError] = useState(null)
   
   useEffect(() => {
     if(isLoading && hasMore) {
@@ -23,7 +23,7 @@ function App() {
           next ? setPage(page + 1) : setHasMore(false)
         })
         .catch(err => { 
-          console.error("Error: ", err)
+          setError(err)
           setHasMore(false) 
         })
         .finally(() => { setIsLoading(false) })
@@ -52,6 +52,7 @@ function App() {
         listRef={listRef}
         openAside={openAside}
         closeAside={closeAside}
+        error={error}
       />
     </div>
   )

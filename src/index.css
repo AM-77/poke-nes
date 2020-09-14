@@ -408,6 +408,25 @@ body {
   margin-bottom: 0;
 }
 
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+
+}
+
+.error h2 {
+  margin: 20px 0;
+  color: var(--fire)
+}
+
+.error button {
+  margin-top: 50px;
+  color: var(--fire)
+}
+
 @media only screen and (max-width: 680px) {
 
   .app-container .app-header {
